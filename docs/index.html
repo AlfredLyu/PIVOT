@@ -7,7 +7,7 @@
 <meta name="description" content="PIVOT: a unified agentic framework for streaming long-video understanding, and LVBench-Ref2Stream, a streaming long-video QA benchmark. NeurIPS 2026.">
 <meta property="og:title" content="PIVOT: A Unified Agentic Framework for Streaming Long-Video Understanding">
 <meta property="og:description" content="Planning over Incremental Video Observations for Timely Answering. NeurIPS 2026.">
-<meta property="og:image" content="static/teaser.png">
+<meta property="og:image" content="static/teaser_poster.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
@@ -101,11 +101,11 @@ p { margin: 0 0 14px; }
 .lead { font-size: 17px; }
 .muted { color: var(--fg-muted); }
 figure { margin: 18px 0 0; }
-figure img {
+figure img, figure video {
   width: 100%; height: auto; display: block; border-radius: 10px;
   background: #fff; padding: 10px; border: 1px solid var(--border);
 }
-figcaption { font-size: 14px; color: var(--fg-muted); margin-top: 10px; }
+figcaption { font-size: 16px; color: var(--fg); margin-top: 10px; }
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 8px; }
 .card {
   background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px;
@@ -128,7 +128,8 @@ th, td { padding: 8px 10px; text-align: center; border-bottom: 1px solid var(--b
 th { background: var(--bg-soft); font-weight: 600; }
 td:first-child, th:first-child { text-align: left; }
 tr.group td { background: var(--bg-soft); color: var(--fg-muted); font-style: italic; font-size: 13.5px; }
-tr.ours td { background: var(--best-bg); font-weight: 600; }
+tr.ours td { background: var(--best-bg); }
+tr.ours td:first-child { font-weight: 600; }
 td b { font-weight: 700; }
 tbody tr:last-child td { border-bottom: none; }
 .note { font-size: 13.5px; color: var(--fg-muted); margin-top: 10px; }
@@ -176,20 +177,18 @@ footer { padding: 28px 0 44px; border-top: 1px solid var(--border); font-size: 1
   </p>
   <p class="affils"><span><sup>1</sup>University of Illinois Urbana-Champaign</span><span><sup>2</sup>Apple</span></p>
   <div class="buttons">
-    <!-- Add the paper link here once available, e.g.
-    <a class="btn" href="https://arxiv.org/abs/XXXX.XXXXX"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6zM14 3v5h5"/></svg>Paper</a>
-    -->
     <a class="btn" href="https://github.com/AlfredLyu/PIVOT">
       <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
       Code
     </a>
+    <!-- TODO: replace #TODO with the paper link -->
+    <a class="btn ghost" href="#TODO">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zm-1 1.5L18.5 9H13zM8 13h8v1.5H8zm0 3.5h8V18H8zM8 9.5h3V11H8z"/></svg>
+      Paper
+    </a>
     <a class="btn ghost" href="https://github.com/AlfredLyu/PIVOT/tree/main/benchmarks/lvbench_ref2stream">
       <svg viewBox="0 0 24 24"><path d="M12 3C7 3 3 4.8 3 7v10c0 2.2 4 4 9 4s9-1.8 9-4V7c0-2.2-4-4-9-4zm0 2c4.2 0 7 1.4 7 2s-2.8 2-7 2-7-1.4-7-2 2.8-2 7-2zm7 12c0 .6-2.8 2-7 2s-7-1.4-7-2v-2.3c1.7.8 4.2 1.3 7 1.3s5.3-.5 7-1.3V17zm0-5c0 .6-2.8 2-7 2s-7-1.4-7-2V9.7c1.7.8 4.2 1.3 7 1.3s5.3-.5 7-1.3V12z"/></svg>
       Benchmark
-    </a>
-    <a class="btn ghost" href="#bibtex">
-      <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3l-2 4zm8 0h3l2-4V7h-6v6h3l-2 4z"/></svg>
-      BibTeX
     </a>
   </div>
 </header>
@@ -198,7 +197,9 @@ footer { padding: 28px 0 44px; border-top: 1px solid var(--border); font-size: 1
 
 <section>
   <figure style="margin-top:0">
-    <img src="static/teaser.png" alt="Streaming setting: questions arrive at query times over a long video; PIVOT defers a future-oriented question until its evidence appears and answers a past-oriented question from bounded memory.">
+    <video autoplay muted loop playsinline preload="auto" poster="static/teaser_poster.jpg" aria-label="Streaming setting: questions arrive at query times over a long video; PIVOT defers a future-oriented question until its evidence appears and answers a past-oriented question from bounded memory.">
+      <source src="static/teaser.mp4" type="video/mp4">
+    </video>
     <figcaption>
       Questions are revealed online and may concern the <span style="color:var(--past);font-weight:600">past</span>,
       <span style="color:var(--present);font-weight:600">present</span>, or
@@ -249,11 +250,12 @@ footer { padding: 28px 0 44px; border-top: 1px solid var(--border); font-size: 1
 </section>
 
 <section>
-  <h2>Ref2Stream: Offline QA &rarr; Streaming QA</h2>
+  <h2>LVBench-Ref2Stream Benchmark</h2>
   <p>
-    Ref2Stream uses the reference time interval [<i>l</i>, <i>r</i>] of a temporally grounded offline QA example as a proxy
-    for when its visual evidence appears. Keeping the question and answer unchanged, it assigns a query time <i>t</i> and a
-    ground-truth answer time <i>g</i>:
+    LVBench-Ref2Stream turns <a href="https://github.com/THUDM/LVBench">LVBench</a>, an hour-scale offline video QA
+    benchmark, into a streaming benchmark. Each question keeps its original options and answer, and is given a
+    <b>query time</b> <i>t</i> (when it is asked during the stream) and a <b>ground-truth answer time</b> <i>g</i>
+    (when it first becomes answerable), based on where its visual evidence [<i>l</i>, <i>r</i>] appears:
   </p>
   <div class="diagram">
     <svg viewBox="0 0 760 250" role="img" aria-label="Ref2Stream query and answer time placement for past, present and future questions">
@@ -300,9 +302,8 @@ footer { padding: 28px 0 44px; border-top: 1px solid var(--border); font-size: 1
   </div>
   <p class="note">Shaded band: sampling range for the query time <i>t</i>; dot: an example query. Present questions are only built for point-like references.</p>
   <p style="margin-top:14px">
-    Instantiated on <a href="https://github.com/THUDM/LVBench">LVBench</a>, this yields <b>LVBench-Ref2Stream</b> with
-    <b>977</b> source QA examples. To avoid cross-variant leakage through shared memory, exactly one temporal variant
-    is kept per source QA and fixed across all methods. Questions are revealed only at their query times, without
+    The benchmark contains <b>977</b> questions (452 past, 63 present, 462 future), one per source LVBench QA, so that
+    no two variants of the same question share a stream. Questions are revealed only at their query times, without
     temporal-type labels, and are scored on both <b>accuracy</b> and <b>answer latency</b>.
   </p>
 </section>
@@ -310,7 +311,9 @@ footer { padding: 28px 0 44px; border-top: 1px solid var(--border); font-size: 1
 <section>
   <h2>Method</h2>
   <figure style="margin-top:0">
-    <img src="static/method.png" alt="PIVOT overview: streaming memory maintenance on the left, agentic question processing with a core planner on the right.">
+    <video autoplay muted loop playsinline preload="auto" poster="static/method_poster.jpg" aria-label="PIVOT overview: streaming memory maintenance on the left, agentic question processing with a core planner on the right.">
+      <source src="static/method.mp4" type="video/mp4">
+    </video>
     <figcaption>
       PIVOT processes the stream in short chunks and separates it into two stages: streaming memory maintenance and
       agentic question processing.
@@ -377,8 +380,8 @@ footer { padding: 28px 0 44px; border-top: 1px solid var(--border); font-size: 1
     </tbody>
   </table>
   </div>
-  <p class="note">Every component contributes. Separating memory maintenance from question processing matters most (future accuracy 53.0 &rarr; 39.8 without it), and structured memory is key for long-range recall (past latency 66.0 &rarr; 134.7&thinsp;s without it).</p>
-  <p class="muted" style="margin-top:12px;font-size:14.5px">See the paper for Answer Readiness Score (ARS) results and evaluations on OVO-Bench and StreamingBench.</p>
+  <p class="note">Every component contributes. Separating memory maintenance from question processing matters most (future accuracy 53.0 &rarr; 39.8 without it), and structured memory is key for long-range recall (past accuracy 56.9 &rarr; 47.6 without it).</p>
+  <p style="margin-top:12px">See the paper for Answer Readiness Score (ARS) results and evaluations on OVO-Bench and StreamingBench.</p>
 </section>
 
 <section id="bibtex">
@@ -402,6 +405,12 @@ footer { padding: 28px 0 44px; border-top: 1px solid var(--border); font-size: 1
 
 <script>
 (function () {
+  // Respect reduced-motion: show the finished figure (poster) instead of the animation.
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll("figure video").forEach(function (v) {
+      v.removeAttribute("autoplay"); v.pause(); v.preload = "none";
+    });
+  }
   var root = document.documentElement;
   var btn = document.getElementById("themeToggle");
   try {

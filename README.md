@@ -4,7 +4,14 @@
 
 <sup>1</sup>University of Illinois Urbana-Champaign &nbsp; <sup>2</sup>Apple
 
-**NeurIPS 2026** &nbsp;|&nbsp; [Paper](#TODO) &nbsp;|&nbsp; [Project Page](https://alfredlyu.github.io/PIVOT/)
+<p align="center">
+  <img src="https://img.shields.io/badge/NeurIPS-2026-6f42c1?style=flat" alt="NeurIPS 2026">
+  &nbsp;
+  <!-- TODO: replace #TODO with the arXiv link -->
+  <a href="#TODO"><img src="https://img.shields.io/badge/Paper-arXiv-B31B1B?style=flat&logo=arxiv&logoColor=white" alt="Paper"></a>
+  &nbsp;
+  <a href="https://alfredlyu.github.io/PIVOT/"><img src="https://img.shields.io/badge/Project-Page-1f72ff?style=flat&logo=googlechrome&logoColor=white" alt="Project Page"></a>
+</p>
 
 ---
 
@@ -19,8 +26,8 @@ This repository contains:
 
 * **PIVOT** — streaming memory maintenance + a planner-controlled action loop
   (`retrieve`, `analyze`, `reflect`, `answer`, `defer`).
-* **Ref2Stream / LVBench-Ref2Stream** — a protocol that converts temporally grounded offline video QA
-  into streaming QA with query-time and answer-time annotations, and its instantiation on LVBench.
+* **LVBench-Ref2Stream** — a streaming long-video QA benchmark built from LVBench, in which past, present,
+  and future questions carry query-time and answer-time annotations.
 * Baselines and evaluation code used in the paper.
 
 ## Method overview
@@ -35,7 +42,7 @@ PIVOT processes the stream in chunks (16 frames at 0.5 fps by default) and split
 2. **Agentic question processing.** For every active question, a **core planner** iteratively picks
    one action — `retrieve` (LLM-reranked memory retrieval), `analyze` (visual-text reasoning over
    the current chunk + retrieved context), `reflect` (verify a candidate answer), `answer`, or
-   `defer` — until it commits or the per-chunk turn budget (5) is exhausted.
+   `defer` — until it commits or the per-chunk turn budget is exhausted.
 
 All modules use **Gemini-3.1-Flash-Lite-Preview** as the backbone in the paper. The exact system
 prompts (paper Appendix D.3) live inside `pivot/run_pivot.py`.
@@ -134,8 +141,15 @@ bash scripts/run_baselines.sh            # FIFO / reservoir MLLM wrappers
 Prior streaming methods (Dispider, TimeChat-Online) are evaluated with the adapters in
 `baselines/prior_methods/`; see the README there.
 
-Results are written to `results/<method>/<model>.../{question_results,video_summaries,video_traces}/`
-(`<method>` is `pivot`, `fifo` or `reservoir`).
+Results are written to `results/<method>/<run_name>/{question_results,video_summaries,video_traces}/`, where
+`<run_name>` ends with the optional `--result_dir_suffix`:
+
+| `<method>` | `<run_name>` |
+|---|---|
+| `pivot` | `<model><suffix>` |
+| `fifo`, `reservoir` | `<model>_vt<max_visual_tokens>_cf<cframe>_stride<frame_stride>_chunk<chunk_size><suffix>` |
+
+`<model>` is the model name with `-`/`.` replaced by `_`/`p` (e.g. `gemini_3p1_flash_lite_preview`).
 `video_traces/` contains the full memory state and every planner action / tool input-output, which
 is useful for inspecting PIVOT's decisions.
 
@@ -153,7 +167,7 @@ reports, overall and per temporal type:
 
 ## Main results (LVBench-Ref2Stream)
 
-Accuracy (%) and latency (s) on the one-variant-per-source-QA benchmark (paper Table 1).
+Accuracy (%) and latency (s) on LVBench-Ref2Stream (paper Table 1).
 Higher accuracy and lower latency are better.
 
 <table>
