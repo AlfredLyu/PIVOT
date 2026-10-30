@@ -4,7 +4,7 @@
 
 <sup>1</sup>University of Illinois Urbana-Champaign &nbsp; <sup>2</sup>Apple
 
-**NeurIPS 2026** &nbsp;|&nbsp; [Paper](#TODO) &nbsp;|&nbsp;
+**NeurIPS 2026** &nbsp;|&nbsp; [Paper](#TODO) &nbsp;|&nbsp; [Project Page](https://alfredlyu.github.io/PIVOT/)
 
 ---
 
@@ -156,21 +156,27 @@ reports, overall and per temporal type:
 Accuracy (%) and latency (s) on the one-variant-per-source-QA benchmark (paper Table 1).
 Higher accuracy and lower latency are better.
 
-| Method | Overall Acc ↑ | Overall Lat ↓ | Past Acc ↑ | Past Lat ↓ | Present Acc ↑ | Present Lat ↓ | Future Acc ↑ | Future Lat ↓ |
-|---|---|---|---|---|---|---|---|---|
-| *Generic MLLMs with FIFO visual-context wrapper* | | | | | | | | |
-| Qwen2.5-VL-7B-Instruct | 26.7 | 136.2 | 24.1 | 233.4 | 38.1 | 186.8 | 27.7 | 35.7 |
-| LLaVA-OneVision-7B | 34.2 | 122.9 | 32.3 | 208.2 | 57.1 | 176.9 | 32.9 | 34.1 |
-| InternVL-8B | 33.3 | 127.7 | 25.2 | 217.8 | 52.4 | 196.4 | 38.5 | 33.5 |
-| Gemini-3.1-flash-lite | 44.8 | 97.2 | 31.4 | 181.4 | 79.4 | 42.9 | **53.2** | 27.4 |
-| GPT-4o | 46.7 | 89.6 | 36.1 | 178.7 | 77.8 | **31.3** | 52.8 | 19.8 |
-| *Generic MLLMs with reservoir visual-context wrapper* | | | | | | | | |
-| Gemini-3.1-flash-lite | 44.1 | 85.3 | 41.4 | 83.6 | 54.0 | 116.4 | 45.5 | 82.4 |
-| GPT-4o | 46.0 | 89.8 | 44.5 | 98.4 | 57.1 | 101.6 | 45.9 | 79.7 |
-| *Prior streaming video methods* | | | | | | | | |
-| Dispider | 32.8 | 45.6 | 32.3 | 71.9 | 42.9 | 72.4 | 31.8 | **11.9** |
-| TimeChat-Online | 23.5 | 40.8 | 24.6 | **62.4** | 42.9 | 51.5 | 19.9 | 18.2 |
-| **PIVOT (ours)** | **56.6** | **37.6** | **56.9** | 66.0 | **81.0** | 36.3 | 53.0 | 12.2 |
+<table>
+<thead>
+<tr><th rowspan="2" align="left">Method</th><th colspan="2">Overall</th><th colspan="2">Past</th><th colspan="2">Present</th><th colspan="2">Future</th></tr>
+<tr><th>Acc ↑</th><th>Lat ↓</th><th>Acc ↑</th><th>Lat ↓</th><th>Acc ↑</th><th>Lat ↓</th><th>Acc ↑</th><th>Lat ↓</th></tr>
+</thead>
+<tbody>
+<tr><td colspan="9"><i>Generic MLLMs with FIFO visual-context wrapper</i></td></tr>
+<tr><td align="left">Qwen2.5-VL-7B-Instruct</td><td align="center">26.7</td><td align="center">136.2</td><td align="center">24.1</td><td align="center">233.4</td><td align="center">38.1</td><td align="center">186.8</td><td align="center">27.7</td><td align="center">35.7</td></tr>
+<tr><td align="left">LLaVA-OneVision-7B</td><td align="center">34.2</td><td align="center">122.9</td><td align="center">32.3</td><td align="center">208.2</td><td align="center">57.1</td><td align="center">176.9</td><td align="center">32.9</td><td align="center">34.1</td></tr>
+<tr><td align="left">InternVL-8B</td><td align="center">33.3</td><td align="center">127.7</td><td align="center">25.2</td><td align="center">217.8</td><td align="center">52.4</td><td align="center">196.4</td><td align="center">38.5</td><td align="center">33.5</td></tr>
+<tr><td align="left">Gemini-3.1-flash-lite</td><td align="center">44.8</td><td align="center">97.2</td><td align="center">31.4</td><td align="center">181.4</td><td align="center">79.4</td><td align="center">42.9</td><td align="center"><b>53.2</b></td><td align="center">27.4</td></tr>
+<tr><td align="left">GPT-4o</td><td align="center">46.7</td><td align="center">89.6</td><td align="center">36.1</td><td align="center">178.7</td><td align="center">77.8</td><td align="center"><b>31.3</b></td><td align="center">52.8</td><td align="center">19.8</td></tr>
+<tr><td colspan="9"><i>Generic MLLMs with reservoir visual-context wrapper</i></td></tr>
+<tr><td align="left">Gemini-3.1-flash-lite</td><td align="center">44.1</td><td align="center">85.3</td><td align="center">41.4</td><td align="center">83.6</td><td align="center">54.0</td><td align="center">116.4</td><td align="center">45.5</td><td align="center">82.4</td></tr>
+<tr><td align="left">GPT-4o</td><td align="center">46.0</td><td align="center">89.8</td><td align="center">44.5</td><td align="center">98.4</td><td align="center">57.1</td><td align="center">101.6</td><td align="center">45.9</td><td align="center">79.7</td></tr>
+<tr><td colspan="9"><i>Prior streaming video methods</i></td></tr>
+<tr><td align="left">Dispider</td><td align="center">32.8</td><td align="center">45.6</td><td align="center">32.3</td><td align="center">71.9</td><td align="center">42.9</td><td align="center">72.4</td><td align="center">31.8</td><td align="center"><b>11.9</b></td></tr>
+<tr><td align="left">TimeChat-Online</td><td align="center">23.5</td><td align="center">40.8</td><td align="center">24.6</td><td align="center"><b>62.4</b></td><td align="center">42.9</td><td align="center">51.5</td><td align="center">19.9</td><td align="center">18.2</td></tr>
+<tr><td align="left"><b>PIVOT (ours)</b></td><td align="center"><b>56.6</b></td><td align="center"><b>37.6</b></td><td align="center"><b>56.9</b></td><td align="center">66.0</td><td align="center"><b>81.0</b></td><td align="center">36.3</td><td align="center">53.0</td><td align="center">12.2</td></tr>
+</tbody>
+</table>
 
 See the paper for the full tables, ablations, and OVO-Bench / StreamingBench results.
 
