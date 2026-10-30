@@ -1,0 +1,8 @@
+openai>=1.66
+google-genai>=1.0
+numpy
+Pillow
+torch>=2.3
+torchvision
+transformers>=4.49
+accelerate
